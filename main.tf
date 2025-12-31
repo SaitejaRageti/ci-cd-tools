@@ -82,4 +82,4 @@ resource "aws_route53_record" "jenkins-agent" {
   ttl     = 1
   records = [aws_instance.jenkins_agent.private_ip]
   allow_overwrite = true
-}
+} 
