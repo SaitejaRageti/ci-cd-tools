@@ -1,5 +1,5 @@
 resource "aws_instance" "jenkins" {
-  ami           = local.ami_id
+  ami           = "ami-0220d79f3f480ecf5"
   instance_type = "t3.small"
   vpc_security_group_ids = [aws_security_group.main.id]
   subnet_id = "subnet-0a49b6541b46e51fa" #replace your Subnet
@@ -19,7 +19,7 @@ resource "aws_instance" "jenkins" {
 }
 
 resource "aws_instance" "jenkins_agent" {
-  ami           = local.ami_id
+  ami           = "ami-0220d79f3f480ecf5"
   instance_type = "t3.small"
   vpc_security_group_ids = [aws_security_group.main.id]
   subnet_id = "subnet-0a49b6541b46e51fa" #replace your Subnet
@@ -66,7 +66,7 @@ resource "aws_security_group" "main" {
   )
 }
 
-resource "aws_route53_record" "jenkins" {
+/* resource "aws_route53_record" "jenkins" {
   zone_id = var.zone_id
   name    = "jenkins.${var.zone_name}"
   type    = "A"
@@ -82,4 +82,4 @@ resource "aws_route53_record" "jenkins-agent" {
   ttl     = 1
   records = [aws_instance.jenkins_agent.private_ip]
   allow_overwrite = true
-} 
+}  */
